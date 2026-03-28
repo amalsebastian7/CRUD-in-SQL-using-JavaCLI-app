@@ -1,24 +1,55 @@
+# ==========================================
+# 1. Custom Application Secrets
+# ==========================================
+# Keeps database credentials and passwords off the internet!
+database.properties
+
+# ==========================================
+# 2. Java & Maven Build Files
+# ==========================================
+# Ignores compiled code (GitHub only needs the raw source code)
 *.class
+bin/
+target/
+
+# Ignores compiled archive packages
 *.jar
 *.war
 *.ear
-*.log
+
+# Ignores Maven backup files generated during builds
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+
+# ==========================================
+# 3. Eclipse IDE Settings
+# ==========================================
+# Ignores personal Eclipse workspace configurations
 .metadata
-bin/
+.settings/
+.recommenders/
+
+# ==========================================
+# 4. Logs and Temporary Files
+# ==========================================
+# Ignores log files and temporary editor swap/backup files
+*.log
 tmp/
 *.tmp
 *.bak
 *.swp
-.settings/
-.recommenders/
-target/
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
+
+# ==========================================
+# 5. OS-Specific System Files
+# ==========================================
+# Ignores hidden macOS system and trash files
 .DS_Store
 .DS_Store?
 ._*
 .Spotlight-V100
 .Trashes
+
+# Ignores Windows image cache files
 ehthumbs.db
 Thumbs.db

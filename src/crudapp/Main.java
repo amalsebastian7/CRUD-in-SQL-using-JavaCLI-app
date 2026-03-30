@@ -26,16 +26,19 @@ public class Main {
 
         // My main application loop that keeps the menu on screen until the user types '0'
         while (running) {
-            System.out.println("\n=== MAIN MENU ===");
-            System.out.println("1. View All Customers");
-            System.out.println("2. Add a New Customer");
-            System.out.println("3. View All Items");
-            System.out.println("4. Add a New Item");
-            System.out.println("5. View All Orders");
-            System.out.println("6. Create a New Order");
-            System.out.println("7. Add an Item to an Order");
-            System.out.println("0. Exit Application");
-            System.out.print("Choose an option: ");
+        	System.out.println("\n=== MAIN MENU ===");
+        	System.out.println("1. View All Customers");
+        	System.out.println("2. Add a New Customer");
+        	System.out.println("3. View All Items");
+        	System.out.println("4. Add a New Item");
+        	System.out.println("5. View All Orders");
+        	System.out.println("6. Create a New Order");
+        	System.out.println("7. Add an Item to an Order");
+        	System.out.println("8. Delete a Customer");
+        	System.out.println("9. Delete an Item");
+        	System.out.println("10. Delete an Order");
+        	System.out.println("0. Exit Application");
+        	System.out.print("Choose an option: ");
 
             // Grabbing the user's choice
             int choice = scanner.nextInt();
@@ -87,7 +90,7 @@ public class Main {
                     // I am saving the newly generated Order ID so I can tell the user what it is
                     int newOrderId = orderDAO.addOrder(new Order(customerId));
                     System.out.println("Successfully created Order #" + newOrderId + " for Customer ID " + customerId);
-                    break;
+                   break;
 
                 case 7:
                     System.out.print("Enter the Order ID: ");
@@ -96,7 +99,28 @@ public class Main {
                     int itemIdToAdd = scanner.nextInt();
                     orderDAO.addItemToOrder(orderIdToUpdate, itemIdToAdd);
                     break;
+                    
+                case 8:
+                    System.out.print("Enter the ID of the Customer to delete: ");
+                    int deleteCustomerId = scanner.nextInt();
+                    customerDAO.deleteCustomer(deleteCustomerId);
+                    System.out.println("✅ Customer #" + deleteCustomerId + " successfully deleted.");
+                    break;
 
+                case 9:
+                    System.out.print("Enter the ID of the Item to delete: ");
+                    int deleteItemId = scanner.nextInt();
+                    itemDAO.deleteItem(deleteItemId);
+                    System.out.println("✅ Item #" + deleteItemId + " successfully deleted.");
+                    break;
+
+                case 10:
+                    System.out.print("Enter the ID of the Order to delete: ");
+                    int deleteOrderId = scanner.nextInt();
+                    orderDAO.deleteOrder(deleteOrderId);
+                    System.out.println("✅ Order #" + deleteOrderId + " successfully deleted.");
+                    break;
+                    
                 case 0:
                     System.out.println("Saving data and shutting down. Goodbye!");
                     running = false; // Breaking the while loop
